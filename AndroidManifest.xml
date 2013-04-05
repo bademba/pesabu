@@ -37,7 +37,7 @@
         <activity
             android:name="com.gitahinganga.pesabu.HelpActivity"
             android:label="@string/title_activity_help" >
-            android:parentActivityName="com.gitahinganga.moneymathkenya.MainActivity" >
+            android:parentActivityName="com.gitahinganga.moneymathkenya.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gitahinganga.moneymathkenya.MainActivity" />
@@ -49,6 +49,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gitahinganga.moneymathkenya.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.gitahinganga.pesabu.TBillActivity"
+            android:label="@string/title_activity_tbill"
+            android:parentActivityName="com.gitahinganga.pesabu.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.gitahinganga.pesabu.MainActivity" />
         </activity>
     </application>
 

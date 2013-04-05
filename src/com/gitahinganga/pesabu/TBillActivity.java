@@ -1,45 +1,28 @@
 package com.gitahinganga.pesabu;
 
 import android.os.Bundle;
-import android.app.TabActivity;
-import android.content.Intent;
-import android.content.res.Resources;
+import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TabHost;
 import android.support.v4.app.NavUtils;
-import com.gitahinganga.pesabu.R;
 
-@SuppressWarnings("deprecation")
-public class TBillActivity extends TabActivity {
+public class TBillActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	    setContentView(R.layout.activity_tbill);
+		setContentView(R.layout.activity_tbill);
+		// Show the Up button in the action bar.
+		setupActionBar();
+	}
 
-	    Resources res = getResources(); // Resource object to get Drawables
-	    TabHost tabHost = getTabHost();  // The activity TabHost
-	    TabHost.TabSpec spec;  // Resusable TabSpec for each tab
-	    Intent intent;  // Reusable Intent for each tab
+	/**
+	 * Set up the {@link android.app.ActionBar}.
+	 */
+	private void setupActionBar() {
 
-	    // Create an Intent to launch an Activity for the tab (to be reused)
-	    intent = new Intent().setClass(this, BuyTBillActivity.class);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("buy").setIndicator("Buy",
-	                      res.getDrawable(R.drawable.buy_tbill))
-	                  .setContent(intent);
-	    tabHost.addTab(spec);
-
-	    // Do the same for the other tabs
-	    intent = new Intent().setClass(this, SellTBillActivity.class);
-	    spec = tabHost.newTabSpec("sel").setIndicator("Sell",
-	                      res.getDrawable(R.drawable.sell_tbill))
-	                  .setContent(intent);
-	    tabHost.addTab(spec);
-
-	    tabHost.setCurrentTab(1);
 	}
 
 	@Override
