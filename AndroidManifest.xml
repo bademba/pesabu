@@ -50,35 +50,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gitahinganga.moneymathkenya.MainActivity" />
         </activity>
-        <activity
-            android:name=".TBillActivity"
-            android:theme="@android:style/Theme.NoTitleBar" 
-             android:label="@string/app_name">
-        </activity>
-        <!-- <activity -->
-        <!-- android:name="com.gitahinganga.pesabu.BuyTBillActivity" -->
-        <!-- android:label="@string/title_activity_buy_tbill" -->
-        <!-- android:parentActivityName="com.gitahinganga.pesabu.MainActivity" > -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.PARENT_ACTIVITY" -->
-        <!-- android:value="com.gitahinganga.pesabu.MainActivity" /> -->
-        <!-- </activity> -->
-        <!-- <activity -->
-        <!-- android:name="com.gitahinganga.pesabu.SellTBillActivity" -->
-        <!-- android:label="@string/title_activity_sell_tbill" -->
-        <!-- android:parentActivityName="com.gitahinganga.pesabu.MainActivity" > -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.PARENT_ACTIVITY" -->
-        <!-- android:value="com.gitahinganga.pesabu.MainActivity" /> -->
-        <!-- </activity> -->
-        <activity
-            android:name=".BuyTBillActivity"
-            android:label="@string/app_name" >
-        </activity>
-        <activity
-            android:name=".SellTBillActivity"
-            android:label="@string/app_name" >
-        </activity>
     </application>
 
 </manifest>
