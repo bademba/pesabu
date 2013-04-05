@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="6dip" >
+
+    <LinearLayout
+        android:id="@+id/row1LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/loanButton"
+            style="@style/HomeButton"
+            android:drawableTop="@drawable/loan"
+            android:onClick="launchLoanActivity"
+            android:text="@string/loan_button_text" />
+
+        <Button
+            android:id="@+id/tBillButton"
+            style="@style/HomeButton"
+            android:drawableTop="@drawable/tbill"
+            android:onClick="launchTBillActivity"
+            android:text="@string/tbill_button_text" />
+
+        <Button
+            android:id="@+id/tBondButton"
+            style="@style/HomeButton"
+            android:drawableTop="@drawable/tbond"
+            android:text="@string/tbond_button_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row2LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/shoppingButton"
+            style="@style/HomeButton"
+            android:drawableTop="@drawable/shopping"
+            android:text="@string/shopping_button_text" />
+
+        <Button
+            android:id="@+id/payeButton"
+            style="@style/HomeButton"
+            android:drawableTop="@drawable/paye"
+            android:text="@string/paye_button_text" />
+
+        <Button
+            android:id="@+id/autoTaxButton"
+            style="@style/HomeButton"
+            android:drawableTop="@drawable/autotax"
+            android:text="@string/autotax_button_text" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,203 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LoanScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true" >
+
+    <LinearLayout
+        android:id="@+id/loanLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".LoanActivity" >
+
+        <TextView
+            android:id="@+id/loanPrincipleTextView"
+            style="@style/InputTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/loan_principle_text" />
+
+        <LinearLayout
+            android:id="@+id/principalLayout"
+            style="@style/RowLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/loanPrincipleEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:hint="@string/two_decimal_number_hint"
+                android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/loanPrincipleButton"
+                style="@style/SmallButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:onClick="clearField"
+                android:text="@string/clear_text" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/loanInterestTextView"
+            style="@style/InputTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/loan_interest_text" />
+
+        <LinearLayout
+            android:id="@+id/interestLayout"
+            style="@style/RowLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/loanInterestEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:hint="@string/two_decimal_number_hint"
+                android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/loanInterestButton"
+                style="@style/SmallButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:onClick="clearField"
+                android:text="@string/clear_text" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/loanPeriodTextView"
+            style="@style/InputTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loan_period_text" />
+
+        <LinearLayout
+            android:id="@+id/periodLayout"
+            style="@style/RowLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/loanPeriodEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:hint="@string/unsigned_integer"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/loanPeriodButton"
+                style="@style/SmallButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:onClick="clearField"
+                android:text="@string/clear_text" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/loanInstallmentTextView"
+            style="@style/InputTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loan_installment_text" />
+
+        <LinearLayout
+            android:id="@+id/installmentLayout"
+            style="@style/RowLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/loanInstallmentEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:hint="@string/two_decimal_number_hint"
+                android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/loanInstallmentButton"
+                style="@style/SmallButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:onClick="clearField"
+                android:text="@string/clear_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/calculateButtonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            style="@style/RowLayout">
+
+            <Button
+                android:id="@+id/calculateButton"
+                style="@style/RegularButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:onClick="calculateLoan"
+                android:text="@string/calculate_button_text" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/totalRepaidTextView"
+            style="@style/OutputTextView"
+            android:text="@string/total_repaid_text" />
+
+        <LinearLayout
+            android:id="@+id/totalRepaidLayout"
+            style="@style/RowLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/totalRepaidEditText"
+                style="@style/OutputEditText"
+                android:ems="10"
+                android:hint="@string/two_decimal_number_hint"
+                android:inputType="none|numberDecimal" >
+
+                <requestFocus />
+            </EditText>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/totalInterestTextView"
+            style="@style/OutputTextView"
+            android:layout_height="wrap_content"
+            android:text="@string/total_interest_text" />
+
+        <LinearLayout
+            android:id="@+id/totalInterestLayout"
+            style="@style/RowLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/totalInterestEditText"
+                style="@style/OutputEditText"
+                android:ems="10"
+                android:hint="@string/two_decimal_number_hint"
+                android:inputType="none|numberDecimal" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

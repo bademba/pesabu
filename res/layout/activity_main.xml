@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="6dip" >
+
+
+    <LinearLayout
+        android:id="@+id/row1LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/loanButton"
+            android:drawableTop="@drawable/loan"
+            style="@style/HomeButton"
+            android:onClick="launchLoanActivity"
+            android:text="@string/loan_button_text" />
+
+        <Button
+            android:id="@+id/tBillButton"
+            android:drawableTop="@drawable/tbill"
+            style="@style/HomeButton"
+            android:onClick="launchTBillActivity"
+            android:text="@string/tbill_button_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row2LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/tBondButton"
+            android:drawableTop="@drawable/tbond"
+            style="@style/HomeButton"
+            android:text="@string/tbond_button_text" />
+
+        <Button
+            android:id="@+id/shoppingButton"
+            android:drawableTop="@drawable/shopping"
+            style="@style/HomeButton"
+            android:text="@string/shopping_button_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row3LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/payeButton"
+            android:drawableTop="@drawable/paye"
+            style="@style/HomeButton"
+            android:text="@string/paye_button_text" />
+
+        <Button
+            android:id="@+id/autoTaxButton"
+            android:drawableTop="@drawable/autotax"
+            style="@style/HomeButton"
+            android:text="@string/autotax_button_text" />
+    </LinearLayout>
+</LinearLayout>
