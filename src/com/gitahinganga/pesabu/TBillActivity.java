@@ -8,6 +8,9 @@ import android.support.v4.app.NavUtils;
 
 public class TBillActivity extends Activity {
 
+	private final int DAYS_IN_A_YEAR = 365;
+	private final int PAR_VALUE = 100;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,4 +52,28 @@ public class TBillActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	private double calculateDiscountedValue(int days, double interestRate) {
+		return PAR_VALUE
+				* (1 / (1 + ((interestRate / 100) * (days / DAYS_IN_A_YEAR))));
+	}
+
+	private int calculateUnits(double faceValue) {
+		return (int) faceValue / PAR_VALUE;
+	}
+
+	private double calculateInvestment(double discountedValue, int units) {
+		return discountedValue * units;
+	}
+
+	private double calculatePreTaxProfit(double faceValue, double investment) {
+		return 0.0;
+	}
+
+	private double calculateTax(double taxRate, double investment) {
+		return taxRate / 100 * investment;
+	}
+
+	private double calculateAfterTaxProfit(double preTaxProfit, double tax) {
+		return preTaxProfit - tax;
+	}
 }
