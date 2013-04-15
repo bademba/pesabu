@@ -76,7 +76,7 @@ public class LoanActivity extends PesabuActivity {
 
 		if (emptyFieldList.size() == 1) {
 			EditText emptyField = emptyFieldList.get(0);
-			DecimalFormat decimalFormat = new DecimalFormat("#.##");
+			DecimalFormat decimalFormat = Util.createDecimalFormat();
 
 			double principle = 0.0;
 			double interest = 0.0;

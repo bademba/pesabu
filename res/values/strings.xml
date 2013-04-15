@@ -48,9 +48,13 @@
     <string name="tbill_face_value_text">Face Value</string>
     <string name="tbill_face_value_hint">Face Value</string>
     <string name="tbill_interest_rate_text">Interest Rate (%)</string>
-    <string name="tbill_discounted_value_text">Discounted Value</string>
-    <string name="tbill_units_text">Units</string>
-    <string name="tbill_investment_text">Investment</string>
-    <string name="tbill_pre_tax_profit_text">Pre-tax Profit</string>
+    <string name="tbill_discounted_unit_value_text">Discounted Unit Value</string>
+    <string name="tbill_units_text">No. of Units</string>
+    <string name="tbill_total_investment_text">Total Investment</string>
+    <string name="tbill_discounted_total_value_text">Discounted Total Value</string>
+    <string name="tbill_tax_text">Withholding Tax (15%)</string>
+    <string name="tbill_net_returns_text">Net Returns</string>
+    <string name="tbill_tax_exempt_text">Tax Exempt</string>
+    <string name="missing_input_field_message">A required input field is missing. Aborting calculation.</string>
 
 </resources>
