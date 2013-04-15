@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.support.v4.app.NavUtils;
 
 public class TBillActivity extends Activity {
@@ -50,6 +52,11 @@ public class TBillActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	public void calculateTBill(View view) {
+		EditText et = (EditText) findViewById(R.id.tbillDiscountedValueEditText);
+		et.setText("2.22");
 	}
 
 	private double calculateDiscountedValue(int days, double interestRate) {

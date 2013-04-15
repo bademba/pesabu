@@ -27,7 +27,7 @@ public class MainActivity extends PesabuActivity {
 	}
 	
 	public void launchTBillActivity(View view) {
-//		Intent tBillIntent = new Intent(this, TBillActivity.class);
-//		startActivity(tBillIntent);
+		Intent tBillIntent = new Intent(this, TBillActivity.class);
+		startActivity(tBillIntent);
 	}
 }

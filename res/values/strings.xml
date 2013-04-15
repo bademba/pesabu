@@ -37,5 +37,20 @@
     <string name="title_section3">Section 3</string>
     <string name="title_activity_buy_tbill">Buy T-Bills</string>
     <string name="title_activity_sell_tbill">Sell T-Bills</string>
+    <string name="tbill_days_text">Days</string>
+
+    <string-array name="tbill_types">
+        <item>91</item>
+        <item>182</item>
+        <item>364</item>
+    </string-array>
+
+    <string name="tbill_face_value_text">Face Value</string>
+    <string name="tbill_face_value_hint">Face Value</string>
+    <string name="tbill_interest_rate_text">Interest Rate (%)</string>
+    <string name="tbill_discounted_value_text">Discounted Value</string>
+    <string name="tbill_units_text">Units</string>
+    <string name="tbill_investment_text">Investment</string>
+    <string name="tbill_pre_tax_profit_text">Pre-tax Profit</string>
 
 </resources>

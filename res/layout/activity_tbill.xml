@@ -1,7 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -9,8 +11,171 @@
     tools:context=".TBillActivity" >
 
     <TextView
+        android:id="@+id/tbillDaysTextView"
+        style="@style/InputTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:text="@string/tbill_days_text" />
 
-</RelativeLayout>
+    <LinearLayout
+        style="@style/RowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Spinner
+            android:id="@+id/tbillDaysSpinner"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:entries="@array/tbill_types" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tbillFaceValueTextView"
+        style="@style/InputTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tbill_face_value_text" />
+
+    <LinearLayout
+        style="@style/RowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/tbillFaceValueEditText"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/two_decimal_number_hint"
+            android:inputType="numberDecimal" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/InputTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tbill_interest_rate_text" />
+
+    <LinearLayout
+        style="@style/RowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/tbillInterestEditText"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/two_decimal_number_hint"
+            android:inputType="numberSigned" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/RowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="calculateTBill"
+            android:text="@string/calculate_button_text" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tbillDiscountedValueTextView"
+        style="@style/OutputTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tbill_discounted_value_text" />
+
+    <LinearLayout
+        style="@style/RowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/tbillDiscountedValueEditText"
+            style="@style/OutputEditText"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/two_decimal_number_hint" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tbillUnitsTextView"
+        style="@style/OutputTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tbill_units_text" />
+
+    <LinearLayout
+        style="@style/RowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/tbillUnitsEditText"
+            style="@style/OutputEditText"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/two_decimal_number_hint" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tbillInvestmentTextView"
+        style="@style/OutputTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tbill_investment_text" />
+
+    <LinearLayout
+        style="@style/RowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/tbillInvestmentEditText"
+            style="@style/OutputEditText"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/two_decimal_number_hint" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tbillPreTaxProfitTextView"
+        style="@style/OutputTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tbill_pre_tax_profit_text" />
+
+    <LinearLayout
+        style="@style/RowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/tbillPreTaxProfitEditText"
+            style="@style/OutputEditText"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/two_decimal_number_hint" />
+    </LinearLayout>
+
+</LinearLayout>
