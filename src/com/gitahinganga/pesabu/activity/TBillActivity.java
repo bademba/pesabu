@@ -1,4 +1,4 @@
-package com.gitahinganga.pesabu;
+package com.gitahinganga.pesabu.activity;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.support.v4.app.NavUtils;
+import com.gitahinganga.pesabu.R;
 
 public class TBillActivity extends Activity {
 

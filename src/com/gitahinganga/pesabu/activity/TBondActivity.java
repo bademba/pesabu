@@ -1,4 +1,4 @@
-package com.gitahinganga.pesabu;
+package com.gitahinganga.pesabu.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import com.gitahinganga.pesabu.R;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

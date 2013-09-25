@@ -1,4 +1,4 @@
-package com.gitahinganga.pesabu;
+package com.gitahinganga.pesabu.activity;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -8,18 +8,19 @@ import android.webkit.WebView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.os.Build;
+import com.gitahinganga.pesabu.R;
 
-public class AboutActivity extends Activity {
+public class HelpActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_about);
+		setContentView(R.layout.activity_help);
 		// Show the Up button in the action bar.
 		setupActionBar();
-		
-		WebView webView = (WebView) findViewById(R.id.aboutWebView);
-		webView.loadData(Util.loadHtml(this, R.raw.about), "text/html", "utf-8");
+
+		WebView webView = (WebView) findViewById(R.id.helpWebView);
+		webView.loadData(Util.loadHtml(this, R.raw.help), "text/html", "utf-8");
 	}
 
 	/**
@@ -35,7 +36,7 @@ public class AboutActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.about, menu);
+		getMenuInflater().inflate(R.menu.help, menu);
 		return true;
 	}
 

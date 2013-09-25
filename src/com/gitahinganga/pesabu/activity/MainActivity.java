@@ -1,9 +1,10 @@
-package com.gitahinganga.pesabu;
+package com.gitahinganga.pesabu.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import com.gitahinganga.pesabu.R;
 
 public class MainActivity extends PesabuActivity {
 

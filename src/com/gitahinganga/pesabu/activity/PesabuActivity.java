@@ -1,4 +1,4 @@
-package com.gitahinganga.pesabu;
+package com.gitahinganga.pesabu.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.gitahinganga.pesabu.R;
+import com.gitahinganga.pesabu.activity.AboutActivity;
+import com.gitahinganga.pesabu.activity.HelpActivity;
 
 public abstract class PesabuActivity extends Activity {
 

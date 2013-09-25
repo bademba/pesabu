@@ -1,4 +1,4 @@
-package com.gitahinganga.pesabu;
+package com.gitahinganga.pesabu.activity;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import com.gitahinganga.pesabu.R;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

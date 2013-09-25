@@ -1,4 +1,4 @@
-package com.gitahinganga.pesabu;
+package com.gitahinganga.pesabu.activity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
