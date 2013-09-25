@@ -2,7 +2,9 @@ package com.gitahinganga.pesabu.activity;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -11,6 +13,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import com.gitahinganga.pesabu.R;
+import com.gitahinganga.pesabu.business.LoanCalculator;
 
 public class LoanActivity extends PesabuActivity {
 
@@ -39,27 +42,8 @@ public class LoanActivity extends PesabuActivity {
 		return true;
 	}
 
-	public void clearField(View view) {
-		EditText editText = null;
-		switch (view.getId()) {
-		case R.id.loanPrincipleButton:
-			editText = (EditText) findViewById(R.id.loanPrincipleEditText);
-			break;
-		case R.id.loanInterestButton:
-			editText = (EditText) findViewById(R.id.loanInterestEditText);
-			break;
-		case R.id.loanPeriodButton:
-			editText = (EditText) findViewById(R.id.loanPeriodEditText);
-			break;
-		case R.id.loanInstallmentButton:
-			editText = (EditText) findViewById(R.id.loanInstallmentEditText);
-			break;
-		}
-		editText.setText("");
-		editText.requestFocus();
-	}
+	public void calculate(View view) {
 
-	public void calculateLoan(View view) {
 		List<EditText> fieldList = new ArrayList<EditText>();
 		fieldList.add((EditText) findViewById(R.id.loanPrincipleEditText));
 		fieldList.add((EditText) findViewById(R.id.loanInterestEditText));
@@ -75,74 +59,56 @@ public class LoanActivity extends PesabuActivity {
 		}
 
 		if (emptyFieldList.size() == 1) {
-			EditText emptyField = emptyFieldList.get(0);
-			DecimalFormat decimalFormat = Util.createDecimalFormat();
+			Map<LoanCalculator.Operand, Object> operands = new HashMap<LoanCalculator.Operand, Object>();
+			Map<LoanCalculator.Result, Object> results = new HashMap<LoanCalculator.Result, Object>();
 
-			double principle = 0.0;
-			double interest = 0.0;
-			int period = 0;
-			double installment = 0.0;
+			DecimalFormat decimalFormat = Util.createDecimalFormat();
+			EditText emptyField = emptyFieldList.get(0);
 
 			switch (emptyField.getId()) {
-			case R.id.loanPrincipleEditText:
-				interest = Double.parseDouble(fieldList.get(1).getText()
-						.toString().replace(",", ""));
-				period = Integer
-						.parseInt(fieldList.get(2).getText().toString());
-				installment = Double.parseDouble(fieldList.get(3).getText()
-						.toString().replace(",", ""));
-				principle = calculatePrinciple(interest, period, installment);
-				emptyField.setText(Util.comify(String.valueOf(decimalFormat
-						.format(principle))));
-				break;
-			case R.id.loanInterestEditText:
-				principle = Double.parseDouble(fieldList.get(0).getText()
-						.toString().replace(",", ""));
-				period = Integer
-						.parseInt(fieldList.get(2).getText().toString());
-				installment = Double.parseDouble(fieldList.get(3).getText()
-						.toString().replace(",", ""));
-				interest = calculateInterest(principle, period, installment);
-				emptyField.setText(Util.comify(String.valueOf(interest)));
-				break;
-			case R.id.loanPeriodEditText:
-				principle = Double.parseDouble(fieldList.get(0).getText()
-						.toString().replace(",", ""));
-				interest = Double.parseDouble(fieldList.get(1).getText()
-						.toString().replace(",", ""));
-				installment = Double.parseDouble(fieldList.get(3).getText()
-						.toString().replace(",", ""));
-				period = calculatePeriod(principle, interest, installment);
-				emptyField.setText(String.valueOf(period));
-				break;
-			case R.id.loanInstallmentEditText:
-				principle = Double.parseDouble(fieldList.get(0).getText()
-						.toString().replace(",", ""));
-				interest = Double.parseDouble(fieldList.get(1).getText()
-						.toString().replace(",", ""));
-				period = Integer
-						.parseInt(fieldList.get(2).getText().toString());
-				installment = calculateInstallment(principle, interest, period);
-				emptyField.setText(Util.comify(String.valueOf(decimalFormat
-						.format(installment))));
-				break;
+				case R.id.loanPrincipleEditText:
+					operands.put(LoanCalculator.Operand.MISSING, LoanCalculator.Operand.PRINCIPAL);
+					operands.put(LoanCalculator.Operand.RATE, Double.parseDouble(fieldList.get(1).getText().toString().replace(",", "")));
+					operands.put(LoanCalculator.Operand.PERIOD, Integer.parseInt(fieldList.get(2).getText().toString()));
+					operands.put(LoanCalculator.Operand.INSTALLMENT, Double.parseDouble(fieldList.get(3).getText().toString().replace(",", "")));
+					results.putAll(new LoanCalculator().calculate(operands));
+					emptyField.setText(Util.comify(String.valueOf(decimalFormat.format(operands.get(LoanCalculator.Operand.PRINCIPAL)))));
+					break;
+				case R.id.loanInterestEditText:
+					operands.put(LoanCalculator.Operand.MISSING, LoanCalculator.Operand.RATE);
+					operands.put(LoanCalculator.Operand.PRINCIPAL, Double.parseDouble(fieldList.get(0).getText().toString().replace(",", "")));
+					operands.put(LoanCalculator.Operand.PERIOD, Integer.parseInt(fieldList.get(2).getText().toString()));
+					operands.put(LoanCalculator.Operand.INSTALLMENT, Double.parseDouble(fieldList.get(3).getText().toString().replace(",", "")));
+					results.putAll(new LoanCalculator().calculate(operands));
+					emptyField.setText(Util.comify(String.valueOf(decimalFormat.format(operands.get(LoanCalculator.Operand.RATE)))));
+					break;
+				case R.id.loanPeriodEditText:
+					operands.put(LoanCalculator.Operand.MISSING, LoanCalculator.Operand.PERIOD);
+					operands.put(LoanCalculator.Operand.PRINCIPAL, Double.parseDouble(fieldList.get(0).getText().toString().replace(",", "")));
+					operands.put(LoanCalculator.Operand.RATE, Double.parseDouble(fieldList.get(1).getText().toString()));
+					operands.put(LoanCalculator.Operand.INSTALLMENT, Double.parseDouble(fieldList.get(3).getText().toString().replace(",", "")));
+					results.putAll(new LoanCalculator().calculate(operands));
+					emptyField.setText(Util.comify(String.valueOf(decimalFormat.format(operands.get(LoanCalculator.Operand.PERIOD)))));
+					break;
+				case R.id.loanInstallmentEditText:
+					operands.put(LoanCalculator.Operand.MISSING, LoanCalculator.Operand.INSTALLMENT);
+					operands.put(LoanCalculator.Operand.PRINCIPAL, Double.parseDouble(fieldList.get(0).getText().toString().replace(",", "")));
+					operands.put(LoanCalculator.Operand.RATE, Double.parseDouble(fieldList.get(1).getText().toString()));
+					operands.put(LoanCalculator.Operand.PERIOD, Integer.parseInt(fieldList.get(2).getText().toString().replace(",", "")));
+					results.putAll(new LoanCalculator().calculate(operands));
+					emptyField.setText(Util.comify(String.valueOf(decimalFormat.format(operands.get(LoanCalculator.Operand.INSTALLMENT)))));
+					break;
 			}
+			EditText tret = (EditText) findViewById(R.id.totalRepaidEditText);
+			EditText tiet = (EditText) findViewById(R.id.totalInterestEditText);
 
-			double totalRepaid = installment * period;
-			double totalInterest = totalRepaid - principle;
-
-			EditText totalRepaidEditText = (EditText) findViewById(R.id.totalRepaidEditText);
-			EditText totalInterestEditText = (EditText) findViewById(R.id.totalInterestEditText);
-
-			totalRepaidEditText.setText(Util.comify(String
-					.valueOf(decimalFormat.format(totalRepaid))));
-			totalInterestEditText.setText(Util.comify(String
-					.valueOf(decimalFormat.format(totalInterest))));
+			tret.setText(Util.comify(String.valueOf(decimalFormat.format(results.get(LoanCalculator.Result.TOTAL_REPAID)))));
+			tiet.setText(Util.comify(String.valueOf(decimalFormat.format(results.get(LoanCalculator.Result.TOTAL_INTEREST)))));
 
 			Util.hideInput(this, view);
 		} else {
 			String message = this.getString(R.string.loan_calculator_message1);
-			EditText fieldToFocus = null;
+			EditText fieldToFocus;
 			if (!emptyFieldList.isEmpty()) {
 				fieldToFocus = emptyFieldList.get(0);
 			} else {
@@ -154,44 +120,23 @@ public class LoanActivity extends PesabuActivity {
 		}
 	}
 
-	private double calculatePrinciple(double interest, int period,
-			double installment) {
-		double principle = 0.0;
-		double monthlyInterest = ((interest / 12) / 100);
-		principle = installment
-				/ ((monthlyInterest / (Math.pow((1 + monthlyInterest), period) - 1)) + monthlyInterest);
-		return principle;
-	}
-
-	private double calculateInterest(double principle, int period,
-			double installment) {
-		double interest = 0.0;
-		// double monthlyInterest = ((interest / 12) / 100);
-		double installmentOverPrinciple = installment / principle;
-		interest = (Math.pow(
-				(installmentOverPrinciple / (installmentOverPrinciple - 1)),
-				(1 / period)) - 1) * 12;
-		return interest;
-	}
-
-	private int calculatePeriod(double principle, double interest,
-			double installment) {
-		int period = 0;
-		double monthlyInterest = ((interest / 12) / 100);
-		double doublePeriod = Math
-				.round(Math
-						.log(((monthlyInterest / ((installment / principle) - monthlyInterest))) + 1)
-						/ Math.log((1 + monthlyInterest)));
-		period = (int) doublePeriod;
-		return period;
-	}
-
-	private double calculateInstallment(double principle, double interest,
-			int period) {
-		double installment = 0.0;
-		double monthlyInterest = ((interest / 12) / 100);
-		installment = principle
-				* ((monthlyInterest / (Math.pow((1 + monthlyInterest), period) - 1)) + monthlyInterest);
-		return installment;
+	public void clear(View view) {
+		EditText editText = null;
+		switch (view.getId()) {
+			case R.id.loanPrincipleButton:
+				editText = (EditText) findViewById(R.id.loanPrincipleEditText);
+				break;
+			case R.id.loanInterestButton:
+				editText = (EditText) findViewById(R.id.loanInterestEditText);
+				break;
+			case R.id.loanPeriodButton:
+				editText = (EditText) findViewById(R.id.loanPeriodEditText);
+				break;
+			case R.id.loanInstallmentButton:
+				editText = (EditText) findViewById(R.id.loanInstallmentEditText);
+				break;
+		}
+		editText.setText("");
+		editText.requestFocus();
 	}
 }

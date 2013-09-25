@@ -43,7 +43,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:onClick="clearField"
+                android:onClick="clear"
                 android:text="@string/clear_text" />
         </LinearLayout>
 
@@ -74,7 +74,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:onClick="clearField"
+                android:onClick="clear"
                 android:text="@string/clear_text" />
         </LinearLayout>
 
@@ -105,7 +105,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:onClick="clearField"
+                android:onClick="clear"
                 android:text="@string/clear_text" />
         </LinearLayout>
 
@@ -136,7 +136,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:onClick="clearField"
+                android:onClick="clear"
                 android:text="@string/clear_text" />
         </LinearLayout>
 
@@ -152,7 +152,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:onClick="calculateLoan"
+                android:onClick="calculate"
                 android:text="@string/calculate_button_text" />
 
         </LinearLayout>
