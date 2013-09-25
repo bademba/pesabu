@@ -8,7 +8,6 @@ import android.webkit.WebView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.os.Build;
-import com.gitahinganga.pesabu.R;
 
 public class HelpActivity extends Activity {
 

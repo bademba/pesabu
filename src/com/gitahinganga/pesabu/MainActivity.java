@@ -1,10 +1,9 @@
 package com.gitahinganga.pesabu;
 
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import com.gitahinganga.pesabu.R;
 
 public class MainActivity extends PesabuActivity {
 
@@ -29,5 +28,10 @@ public class MainActivity extends PesabuActivity {
 	public void launchTBillActivity(View view) {
 		Intent tBillIntent = new Intent(this, TBillActivity.class);
 		startActivity(tBillIntent);
+	}
+
+	public void launchTBondActivity(View view) {
+		Intent tBondIntent = new Intent(this, TBondActivity.class);
+		startActivity(tBondIntent);
 	}
 }

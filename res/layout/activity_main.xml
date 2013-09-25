@@ -39,6 +39,7 @@
             android:id="@+id/tBondButton"
             android:drawableTop="@drawable/tbond"
             style="@style/HomeButton"
+			android:onClick="launchTBondActivity"
             android:text="@string/tbond_button_text" />
 
         <Button
