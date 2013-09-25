@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+			xmlns:tools="http://schemas.android.com/tools"
+			android:id="@+id/PayeScrollView"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:fillViewport="true">
+
+	<LinearLayout
+			android:id="@+id/payeLinearLayout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:paddingBottom="@dimen/activity_vertical_margin"
+			android:paddingLeft="@dimen/activity_horizontal_margin"
+			android:paddingRight="@dimen/activity_horizontal_margin"
+			android:paddingTop="@dimen/activity_vertical_margin"
+			tools:context=".PayeActivity">
+
+		<TextView
+				android:id="@+id/grossSalaryTextView"
+				style="@style/InputTextView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/gross_salary_text"/>
+
+		<LinearLayout
+				android:id="@+id/grossSalaryLayout"
+				style="@style/RowLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+			<EditText
+					android:id="@+id/grossSalaryEditText"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="4"
+					android:hint="@string/two_decimal_number_hint"
+					android:inputType="numberDecimal"/>
+		</LinearLayout>
+
+
+		<TextView
+				android:id="@+id/nhifTextView"
+				style="@style/InputTextView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/nhif_text"/>
+
+		<LinearLayout
+				android:id="@+id/nhifLayout"
+				style="@style/RowLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+			<EditText
+					android:id="@+id/nhifEditText"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="4"
+					android:hint="@string/two_decimal_number_hint"
+					android:inputType="numberDecimal"/>
+		</LinearLayout>
+
+		<TextView
+				android:id="@+id/nssfTextView"
+				style="@style/InputTextView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/nssf_text"/>
+
+		<LinearLayout
+				android:id="@+id/nssfLayout"
+				style="@style/RowLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+			<EditText
+					android:id="@+id/nssfEditText"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="4"
+					android:hint="@string/two_decimal_number_hint"
+					android:inputType="numberDecimal"/>
+		</LinearLayout>
+
+		<TextView
+				android:id="@+id/otherPayeExemptTextView"
+				style="@style/InputTextView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/other_paye_exempt_text"/>
+
+		<LinearLayout
+				android:id="@+id/otherPayeExemptLayout"
+				style="@style/RowLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+			<EditText
+					android:id="@+id/otherPayeExemptEditText"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="4"
+					android:hint="@string/two_decimal_number_hint"
+					android:inputType="numberDecimal"/>
+		</LinearLayout>
+
+		<LinearLayout
+				android:id="@+id/calculateButtonLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				style="@style/RowLayout">
+
+			<Button
+					android:id="@+id/calculateButton"
+					style="@style/RegularButton"
+					android:layout_width="0dp"
+					android:layout_height="fill_parent"
+					android:layout_weight="1"
+					android:onClick="calculatePaye"
+					android:text="@string/calculate_button_text"/>
+
+		</LinearLayout>
+
+		<TextView
+				android:id="@+id/taxBracketTextView"
+				style="@style/OutputTextView"
+				android:text="@string/tax_bracket_text"/>
+
+		<LinearLayout
+				android:id="@+id/taxBracketLayout"
+				style="@style/RowLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+			<EditText
+					android:id="@+id/taxBracketEditText"
+					style="@style/OutputEditText"
+					android:ems="10"
+					android:hint="@string/two_decimal_number_hint"
+					android:inputType="none|numberDecimal">
+
+				<requestFocus/>
+			</EditText>
+		</LinearLayout>
+
+		<TextView
+				android:id="@+id/payeTextView"
+				style="@style/OutputTextView"
+				android:layout_height="wrap_content"
+				android:text="@string/paye_text"/>
+
+		<LinearLayout
+				android:id="@+id/payeLayout"
+				style="@style/RowLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+			<EditText
+					android:id="@+id/payeEditText"
+					style="@style/OutputEditText"
+					android:ems="10"
+					android:hint="@string/two_decimal_number_hint"
+					android:inputType="none|numberDecimal"/>
+		</LinearLayout>
+
+		<TextView
+				android:id="@+id/netSalaryTextView"
+				style="@style/OutputTextView"
+				android:layout_height="wrap_content"
+				android:text="@string/net_salary_text"/>
+
+		<LinearLayout
+				android:id="@+id/netSalaryLayout"
+				style="@style/RowLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+			<EditText
+					android:id="@+id/netSalaryEditText"
+					style="@style/OutputEditText"
+					android:ems="10"
+					android:hint="@string/two_decimal_number_hint"
+					android:inputType="none|numberDecimal"/>
+		</LinearLayout>
+	</LinearLayout>
+
+</ScrollView>

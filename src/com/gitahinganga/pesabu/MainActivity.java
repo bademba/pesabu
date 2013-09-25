@@ -34,4 +34,9 @@ public class MainActivity extends PesabuActivity {
 		Intent tBondIntent = new Intent(this, TBondActivity.class);
 		startActivity(tBondIntent);
 	}
+
+	public void launchPayeActivity(View view) {
+		Intent payeIntent = new Intent(this, PayeActivity.class);
+		startActivity(payeIntent);
+	}
 }

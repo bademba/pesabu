@@ -62,6 +62,7 @@
                 android:value="com.gitahinganga.pesabu.MainActivity" />
         </activity>
 		<activity android:name=".TBondActivity" android:label="T-Bond Calculator"/>
+		<activity android:name=".PayeActivity" android:label="PAYE Calculator"/>
 	</application>
 
 </manifest>

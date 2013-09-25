@@ -60,6 +60,7 @@
             android:id="@+id/payeButton"
             android:drawableTop="@drawable/paye"
             style="@style/HomeButton"
+			android:onClick="launchPayeActivity"
             android:text="@string/paye_button_text" />
 
         <Button
