@@ -13,7 +13,11 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import com.gitahinganga.pesabu.R;
-import com.gitahinganga.pesabu.business.LoanCalculator;
+import com.gitahinganga.pesabu.business.CalculationManager;
+import com.gitahinganga.pesabu.business.CalculationPiece;
+import com.gitahinganga.pesabu.business.Calculator;
+import com.gitahinganga.pesabu.business.loan.LoanOperand;
+import com.gitahinganga.pesabu.business.loan.LoanResult;
 
 public class LoanActivity extends PesabuActivity {
 
@@ -21,7 +25,6 @@ public class LoanActivity extends PesabuActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_loan);
-		// Show the Up button in the action bar.
 		setupActionBar();
 	}
 
@@ -59,51 +62,51 @@ public class LoanActivity extends PesabuActivity {
 		}
 
 		if (emptyFieldList.size() == 1) {
-			Map<LoanCalculator.Operand, Object> operands = new HashMap<LoanCalculator.Operand, Object>();
-			Map<LoanCalculator.Result, Object> results = new HashMap<LoanCalculator.Result, Object>();
+			Map<CalculationPiece, Object> operands = new HashMap<CalculationPiece, Object>();
+			Map<CalculationPiece, Object> results = null;
 
 			DecimalFormat decimalFormat = Util.createDecimalFormat();
 			EditText emptyField = emptyFieldList.get(0);
 
 			switch (emptyField.getId()) {
 				case R.id.loanPrincipleEditText:
-					operands.put(LoanCalculator.Operand.MISSING, LoanCalculator.Operand.PRINCIPAL);
-					operands.put(LoanCalculator.Operand.RATE, Double.parseDouble(fieldList.get(1).getText().toString().replace(",", "")));
-					operands.put(LoanCalculator.Operand.PERIOD, Integer.parseInt(fieldList.get(2).getText().toString()));
-					operands.put(LoanCalculator.Operand.INSTALLMENT, Double.parseDouble(fieldList.get(3).getText().toString().replace(",", "")));
-					results.putAll(new LoanCalculator().calculate(operands));
-					emptyField.setText(Util.comify(String.valueOf(decimalFormat.format(operands.get(LoanCalculator.Operand.PRINCIPAL)))));
+					operands.put(LoanOperand.MISSING, LoanOperand.PRINCIPAL);
+					operands.put(LoanOperand.RATE, Double.parseDouble(fieldList.get(1).getText().toString().replace(",", "")));
+					operands.put(LoanOperand.PERIOD, Integer.parseInt(fieldList.get(2).getText().toString()));
+					operands.put(LoanOperand.INSTALLMENT, Double.parseDouble(fieldList.get(3).getText().toString().replace(",", "")));
+					results = CalculationManager.calculate(operands, Calculator.Type.LOAN);
+					emptyField.setText(Util.comify(String.valueOf(decimalFormat.format(operands.get(LoanOperand.PRINCIPAL)))));
 					break;
 				case R.id.loanInterestEditText:
-					operands.put(LoanCalculator.Operand.MISSING, LoanCalculator.Operand.RATE);
-					operands.put(LoanCalculator.Operand.PRINCIPAL, Double.parseDouble(fieldList.get(0).getText().toString().replace(",", "")));
-					operands.put(LoanCalculator.Operand.PERIOD, Integer.parseInt(fieldList.get(2).getText().toString()));
-					operands.put(LoanCalculator.Operand.INSTALLMENT, Double.parseDouble(fieldList.get(3).getText().toString().replace(",", "")));
-					results.putAll(new LoanCalculator().calculate(operands));
-					emptyField.setText(Util.comify(String.valueOf(decimalFormat.format(operands.get(LoanCalculator.Operand.RATE)))));
+					operands.put(LoanOperand.MISSING, LoanOperand.RATE);
+					operands.put(LoanOperand.PRINCIPAL, Double.parseDouble(fieldList.get(0).getText().toString().replace(",", "")));
+					operands.put(LoanOperand.PERIOD, Integer.parseInt(fieldList.get(2).getText().toString()));
+					operands.put(LoanOperand.INSTALLMENT, Double.parseDouble(fieldList.get(3).getText().toString().replace(",", "")));
+					results = CalculationManager.calculate(operands, Calculator.Type.LOAN);
+					emptyField.setText(Util.comify(String.valueOf(decimalFormat.format(operands.get(LoanOperand.RATE)))));
 					break;
 				case R.id.loanPeriodEditText:
-					operands.put(LoanCalculator.Operand.MISSING, LoanCalculator.Operand.PERIOD);
-					operands.put(LoanCalculator.Operand.PRINCIPAL, Double.parseDouble(fieldList.get(0).getText().toString().replace(",", "")));
-					operands.put(LoanCalculator.Operand.RATE, Double.parseDouble(fieldList.get(1).getText().toString()));
-					operands.put(LoanCalculator.Operand.INSTALLMENT, Double.parseDouble(fieldList.get(3).getText().toString().replace(",", "")));
-					results.putAll(new LoanCalculator().calculate(operands));
-					emptyField.setText(Util.comify(String.valueOf(decimalFormat.format(operands.get(LoanCalculator.Operand.PERIOD)))));
+					operands.put(LoanOperand.MISSING, LoanOperand.PERIOD);
+					operands.put(LoanOperand.PRINCIPAL, Double.parseDouble(fieldList.get(0).getText().toString().replace(",", "")));
+					operands.put(LoanOperand.RATE, Double.parseDouble(fieldList.get(1).getText().toString()));
+					operands.put(LoanOperand.INSTALLMENT, Double.parseDouble(fieldList.get(3).getText().toString().replace(",", "")));
+					results = CalculationManager.calculate(operands, Calculator.Type.LOAN);
+					emptyField.setText(Util.comify(String.valueOf(decimalFormat.format(operands.get(LoanOperand.PERIOD)))));
 					break;
 				case R.id.loanInstallmentEditText:
-					operands.put(LoanCalculator.Operand.MISSING, LoanCalculator.Operand.INSTALLMENT);
-					operands.put(LoanCalculator.Operand.PRINCIPAL, Double.parseDouble(fieldList.get(0).getText().toString().replace(",", "")));
-					operands.put(LoanCalculator.Operand.RATE, Double.parseDouble(fieldList.get(1).getText().toString()));
-					operands.put(LoanCalculator.Operand.PERIOD, Integer.parseInt(fieldList.get(2).getText().toString().replace(",", "")));
-					results.putAll(new LoanCalculator().calculate(operands));
-					emptyField.setText(Util.comify(String.valueOf(decimalFormat.format(operands.get(LoanCalculator.Operand.INSTALLMENT)))));
+					operands.put(LoanOperand.MISSING, LoanOperand.INSTALLMENT);
+					operands.put(LoanOperand.PRINCIPAL, Double.parseDouble(fieldList.get(0).getText().toString().replace(",", "")));
+					operands.put(LoanOperand.RATE, Double.parseDouble(fieldList.get(1).getText().toString()));
+					operands.put(LoanOperand.PERIOD, Integer.parseInt(fieldList.get(2).getText().toString().replace(",", "")));
+					results = CalculationManager.calculate(operands, Calculator.Type.LOAN);
+					emptyField.setText(Util.comify(String.valueOf(decimalFormat.format(operands.get(LoanOperand.INSTALLMENT)))));
 					break;
 			}
-			EditText tret = (EditText) findViewById(R.id.totalRepaidEditText);
-			EditText tiet = (EditText) findViewById(R.id.totalInterestEditText);
+			EditText totalRepaid = (EditText) findViewById(R.id.totalRepaidEditText);
+			EditText totalInterest = (EditText) findViewById(R.id.totalInterestEditText);
 
-			tret.setText(Util.comify(String.valueOf(decimalFormat.format(results.get(LoanCalculator.Result.TOTAL_REPAID)))));
-			tiet.setText(Util.comify(String.valueOf(decimalFormat.format(results.get(LoanCalculator.Result.TOTAL_INTEREST)))));
+			totalRepaid.setText(Util.comify(String.valueOf(decimalFormat.format(results.get(LoanResult.TOTAL_REPAID)))));
+			totalInterest.setText(Util.comify(String.valueOf(decimalFormat.format(results.get(LoanResult.TOTAL_INTEREST)))));
 
 			Util.hideInput(this, view);
 		} else {
