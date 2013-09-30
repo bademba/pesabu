@@ -16,8 +16,8 @@ import com.gitahinganga.pesabu.R;
 import com.gitahinganga.pesabu.business.CalculationManager;
 import com.gitahinganga.pesabu.business.CalculationPiece;
 import com.gitahinganga.pesabu.business.Calculator;
-import com.gitahinganga.pesabu.business.loan.LoanOperand;
-import com.gitahinganga.pesabu.business.loan.LoanResult;
+import com.gitahinganga.pesabu.business.calculationpiece.LoanOperand;
+import com.gitahinganga.pesabu.business.calculationpiece.LoanResult;
 
 public class LoanActivity extends PesabuActivity {
 

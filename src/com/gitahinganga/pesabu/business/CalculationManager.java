@@ -1,6 +1,6 @@
 package com.gitahinganga.pesabu.business;
 
-import com.gitahinganga.pesabu.business.loan.LoanCalculator;
+import com.gitahinganga.pesabu.business.calculator.LoanCalculator;
 
 import java.util.Map;
 

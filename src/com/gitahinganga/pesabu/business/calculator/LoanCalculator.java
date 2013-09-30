@@ -1,8 +1,10 @@
-package com.gitahinganga.pesabu.business.loan;
+package com.gitahinganga.pesabu.business.calculator;
 
 
 import com.gitahinganga.pesabu.business.CalculationPiece;
 import com.gitahinganga.pesabu.business.Calculator;
+import com.gitahinganga.pesabu.business.calculationpiece.LoanOperand;
+import com.gitahinganga.pesabu.business.calculationpiece.LoanResult;
 
 import java.util.HashMap;
 import java.util.Map;

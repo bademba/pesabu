@@ -38,7 +38,7 @@ public class PayeActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		//getMenuInflater().inflate(R.menu.loan, menu);
+		//getMenuInflater().inflate(R.menu.calculator, menu);
 		return true;
 	}
 
